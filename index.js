@@ -1,53 +1,62 @@
-const texts = ["web designer", "React developer", "graphics designer"];
-let index = 0;
-let textIndex = 0;
-const dynamicText = document.getElementById("dynamic-text");
+// Switch sections
+document.querySelectorAll('.sidebar li').forEach((item, index) => {
+    item.addEventListener('click', () => {
+        // Hide all sections
+        document.querySelectorAll('.editor .section').forEach(section => {
+            section.style.display = 'none';
+        });
 
-function type() {
-    if (textIndex < texts[index].length) {
-        dynamicText.textContent += texts[index].charAt(textIndex);
-        textIndex++;
-        setTimeout(type, 100); // Adjust typing speed here (in milliseconds)
-    } else {
-        setTimeout(erase, 2000); // Wait before erasing (in milliseconds)
-    }
+        // Show the selected section
+        const sectionIds = ['home', 'about', 'projects', 'contact'];
+        document.getElementById(sectionIds[index]).style.display = 'block';
+    });
+});
+
+// Show the first section by default
+document.getElementById('home').style.display = 'block';
+// Select all tabs and tab content sections
+const tabs = document.querySelectorAll('.tab');
+const contents = document.querySelectorAll('.tab-content');
+
+// Add click event listener to each tab
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove 'active' class from all tabs
+        tabs.forEach(tab => tab.classList.remove('active'));
+
+        // Add 'active' class to the clicked tab
+        tab.classList.add('active');
+
+        // Hide all content sections
+        contents.forEach(content => content.classList.remove('active'));
+
+        // Show the content section corresponding to the clicked tab
+        const target = tab.getAttribute('data-target');
+        document.getElementById(target).classList.add('active');
+    });
+});
+
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    section.scrollIntoView({ behavior: 'smooth' });
 }
 
-function erase() {
-    if (textIndex > 0) {
-        dynamicText.textContent = texts[index].substring(0, textIndex - 1);
-        textIndex--;
-        setTimeout(erase, 100); // Adjust erasing speed here (in milliseconds)
-    } else {
-        index = (index + 1) % texts.length; // Move to the next text
-        setTimeout(type, 1000); // Wait before starting to type the next text
-    }
-}
+/// Select all project cards
+const projectCards = document.querySelectorAll('.project-card');
 
-// Start the typing animation
-type();
-const sections = document.querySelectorAll("section");
-const scrollLine = document.querySelector(".scroll-line");
-
-function updateScrollLine() {
-    let currentSection = "";
-
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const sectionHeight = section.offsetHeight;
-
-        if (sectionTop <= window.innerHeight / 2 && sectionTop + sectionHeight > window.innerHeight / 2) {
-            currentSection = section.getAttribute("id");
+// Function to add the active class when in view
+function swipeInOnScroll() {
+    projectCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+            card.classList.add('active');
         }
     });
-
-    // Update the position of the scroll line based on the current section
-    const activeSection = document.getElementById(currentSection);
-    if (activeSection) {
-        const activeSectionTop = activeSection.getBoundingClientRect().top + window.scrollY;
-        scrollLine.style.top = `${activeSectionTop}px`;
-    }
 }
 
-// Add event listener for scroll event
-window.addEventListener("scroll", updateScrollLine);
+// Listen for the scroll event
+window.addEventListener('scroll', swipeInOnScroll);
+
+// Trigger the function once at load to reveal any visible cards
+swipeInOnScroll();
+
