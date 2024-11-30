@@ -1,62 +1,48 @@
-// Switch sections
-document.querySelectorAll('.sidebar li').forEach((item, index) => {
-    item.addEventListener('click', () => {
-        // Hide all sections
-        document.querySelectorAll('.editor .section').forEach(section => {
-            section.style.display = 'none';
-        });
-
-        // Show the selected section
-        const sectionIds = ['home', 'about', 'projects', 'contact'];
-        document.getElementById(sectionIds[index]).style.display = 'block';
-    });
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
 });
+const typedText = document.getElementById('typed-text');
+const colors = ['#007acc', '#28a745', '#dc3545', '#ffc107']; 
+const words = ['Frontend Developer 😌', 'Lifelong Learner 🧑🏻‍💻', 'Creative Thinker 💭', 'Problem Solver 👩‍🏭'];
+let wordIndex = 0;
+let charIndex = 0;
 
-// Show the first section by default
-document.getElementById('home').style.display = 'block';
-// Select all tabs and tab content sections
-const tabs = document.querySelectorAll('.tab');
-const contents = document.querySelectorAll('.tab-content');
+const typingSpeed = 150; // Speed of typing in milliseconds
+const erasingSpeed = 100; // Speed of erasing in milliseconds
+const delayBetweenWords = 1500; // Delay before typing the next word
 
-// Add click event listener to each tab
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        // Remove 'active' class from all tabs
-        tabs.forEach(tab => tab.classList.remove('active'));
-
-        // Add 'active' class to the clicked tab
-        tab.classList.add('active');
-
-        // Hide all content sections
-        contents.forEach(content => content.classList.remove('active'));
-
-        // Show the content section corresponding to the clicked tab
-        const target = tab.getAttribute('data-target');
-        document.getElementById(target).classList.add('active');
-    });
-});
-
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    section.scrollIntoView({ behavior: 'smooth' });
+function typeWord() {
+    if (charIndex < words[wordIndex].length) {
+        // Change the text and color dynamically
+        typedText.textContent += words[wordIndex].charAt(charIndex);
+        typedText.style.color = colors[wordIndex]; // Change color based on the word
+        charIndex++;
+        setTimeout(typeWord, typingSpeed);
+    } else {
+        setTimeout(eraseWord, delayBetweenWords);
+    }
 }
 
-/// Select all project cards
-const projectCards = document.querySelectorAll('.project-card');
-
-// Function to add the active class when in view
-function swipeInOnScroll() {
-    projectCards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 50) {
-            card.classList.add('active');
-        }
-    });
+function eraseWord() {
+    if (charIndex > 0) {
+        typedText.textContent = words[wordIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseWord, erasingSpeed);
+    } else {
+        wordIndex = (wordIndex + 1) % words.length; // Move to the next word in the array
+        setTimeout(typeWord, typingSpeed);
+    }
 }
 
-// Listen for the scroll event
-window.addEventListener('scroll', swipeInOnScroll);
+// Start the typing effect
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(typeWord, delayBetweenWords);
+});
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
 
-// Trigger the function once at load to reveal any visible cards
-swipeInOnScroll();
-
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active'); // Toggle hamburger animation
+    navLinks.classList.toggle('active'); // Show or hide the nav links
+});

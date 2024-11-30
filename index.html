@@ -3,229 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VS Code Portfolio</title>
+    <title>Portfolio Replica</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="vscode-layout">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <ul>
-                <li>
-                    <a href="index.html" title="HTML">
-                        <img src="assets/html-5.png" alt="HTML Icon" class="icons">
-                        <span>HTML</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="css.html" title="CSS">
-                        <img src="assets/css-3.png" alt="CSS Icon" class="icons">
-                        <span>CSS</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript.html" title="JavaScript">
-                        <img src="assets/js.png" alt="JavaScript Icon" class="icons">
-                        <span>JavaScript</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="react.html" title="React">
-                        <img src="assets/atom.png" alt="React Icon" class="icons">
-                        <span>React</span>
-                    </a>
-                </li>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="header">Namubiru Rose</h1>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
+            <button id="theme-toggle" class="theme-toggle">
+                <span class="light-mode-icon">🌞</span>
+                <span class="dark-mode-icon">🌙</span>
+            </button>
         </div>
-        
-        
-        <!-- Main Content -->
-        <div class="main">
-            <!-- Top Bar -->
-            <div class="top-bar">
-                <div class="menu">
-                    <span>File</span>
-                    <span>Edit</span>
-                    <span>View</span>
-                    <span>Go</span>
-                    <span>Run</span>
-                    <span>Help</span>
-                </div>
-                <div class="tabs">
-                    <span class="tab active" data-target="home">Portfolio.js</span>
-                    <span class="tab" data-target="about">About.js</span>
-                    <span class="tab" data-target="projects">Projects.js</span>
-                </div>
-                <div class="window-controls">
-                    <span class="control minimize">-</span>
-                    <span class="control maximize">☐</span>
-                    <span class="control close">×</span>
-                </div>
-            </div>
-            
-            
+    </nav>
+    
+    <!-- Home Section -->
+    <header id="home" class="home-section">
+        <div class="container">
+            <h1>Hello, 👋👋</h1>
+            <h2 class="typing-effect">
+                I am a  &nbsp;    
+                <span id="typed-text"></span>
+                <span class="cursor">|</span>
+            </h2>            
+            <p class="solutions">Building elegant solutions to complex problems with modern technologies</p>
+            <button type="button" class="contact-me" onclick="scrollToContact()">Contact Me</button>
+            <button type="submit" class="contact-me"> View Projects</button>
+        </div>
+    </header>
 
-            <!-- Editor Area -->
-            <div class="editor">
-                <div id="home" class="tab-content active">
-                    <h1 class="name">Namubiru Rose</h1>
-                    <p>Discover my projects, skills, and experience.</p>
-                    <div class="buttons">
-                        <button class="btn" onclick="scrollToSection('projects')">View Work</button>
-                        <button class="btn" onclick="scrollToSection('contact')">Contact Me</button>
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Website Analysis Tool</h3>
+                    <p>A tool that helps website owners improve their site’s performance.</p>
+                    <div class="tags">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                        <span>Docker</span>
                     </div>
-                    <div class="spheres">
-                        <div class="sphere sphere1"></div>
-                        <div class="sphere sphere2"></div>
-                        <div class="sphere sphere3"></div>
-                        <div class="sphere sphere4"></div>
-                        <div class="sphere sphere5"></div>
-                        <div class="sphere sphere6"></div>
-                        <div class="sphere sphere7"></div>
-                        <div class="sphere sphere8"></div>
-                        <div class="sphere sphere9"></div>
-                        <div class="sphere sphere10"></div>
-                        <div class="sphere sphere11"></div>
-                        <div class="sphere sphere12"></div>
-                        <div class="sphere sphere13"></div>
-                        <div class="sphere sphere14"></div>
-                        <div class="sphere sphere15"></div>
-                    </div>                    
+                    <a href="#" class="project-link">Visit</a>
                 </div>
-                
-                <div id="about" class="section tab-content active">
-                    <h2>About Me</h2>
-                    <p>
-                        Hi, I am a creative and dedicated frontend developer with <strong>1.5 years of experience</strong> in building responsive and user-friendly web applications. My toolkit includes <strong>React.js</strong>, <strong>JavaScript</strong>, <strong>HTML</strong>, and <strong>CSS</strong>, which I use to bring ideas to life on the web.
-                    </p>
-                    <p>
-                        I'm a lifelong learner currently exploring <strong>Python</strong>, diving into backend development and data-driven projects. I believe that continuous learning is key to staying ahead in technology, and I love challenging myself with new tools and frameworks.
-                    </p>
-                    <p>
-                        When I am not coding, you will find me working on personal projects or contributing to the developer community. I enjoy solving problems through code, experimenting with UI/UX designs, and building applications that make an impact. My projects reflect my passion for clean, efficient, and innovative solutions, and you can check them out on my <a href="https://github.com/your-github-profile" target="_blank" rel="noopener">GitHub</a>.
-                    </p>
-                    <p>
-                        I'm particularly drawn to collaborative environments where I can share ideas, learn from others, and work on meaningful projects that push boundaries. I’m also exploring how Python can enhance my projects and open doors to exciting new possibilities in data science and backend development.
-                    </p>
-                    <p>
-                        If you’re looking for a developer who is passionate about turning concepts into engaging web experiences, let’s connect! I’m always open to collaborating and contributing to impactful projects.
-                    </p>
-                    <blockquote>
-                        "Code is not just about solving problems, but also about creating experiences that inspire."
-                    </blockquote>
-                    <div class="skills">
-                        <h3>Skills</h3>
-                        <ul>
-                            <li>React.js</li>
-                            <li>JavaScript (ES6+)</li>
-                            <li>HTML5 & CSS3</li>
-                            <li>Responsive Web Design</li>
-                            <li>Git & GitHub</li>
-                            <li>Python (Beginner)</li>
-                            <li>TypeScript</li>
-                            <li>Node.js</li>
-                            <li>Webpack</li>
-                        </ul>
-                    </div>                  
-                </div>
-                
-                <div id="projects" class="section tab-content active">
-                    <h2>Projects</h2>
-                    <div class="projects-container">
-                        <!-- Project Card 1 -->
-                        <div class="project-card">
-                            <h3>Weather App</h3>
-                            <p>A simple weather application built with React.js and OpenWeather API.</p>
-                            <div class="languages">
-                                <span>React.js</span>
-                                <span>JavaScript</span>
-                                <span>HTML</span>
-                            </div>
-                            <a href="https://github.com/your-github/weather-app" target="_blank" class="github-link" rel="noopener">
-                                <img src="assets/github.svg" alt="GitHub Link">
-                            </a>
-                        </div>
-                        <!-- Project Card 2 -->
-                        <div class="project-card">
-                            <h3>Expense Tracker</h3>
-                            <p>A personal expense tracker built with HTML, CSS, and JavaScript.</p>
-                            <div class="languages">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <a href="https://github.com/your-github/expense-tracker" target="_blank" class="github-link" rel="noopener">
-                                <img src="assets/github.svg" alt="GitHub Link">
-                            </a>
-                        </div>
-                        <div class="project-card">
-                            <h3>Weather App</h3>
-                            <p>A simple weather application built with React.js and OpenWeather API.</p>
-                            <div class="languages">
-                                <span>React.js</span>
-                                <span>JavaScript</span>
-                                <span>HTML</span>
-                            </div>
-                            <a href="https://github.com/your-github/weather-app" target="_blank" class="github-link" rel="noopener">
-                                <img src="assets/github.svg" alt="GitHub Link">
-                            </a>
-                        </div>
-                        <div class="project-card">
-                            <h3>Weather App</h3>
-                            <p>A simple weather application built with React.js and OpenWeather API.</p>
-                            <div class="languages">
-                                <span>React.js</span>
-                                <span>JavaScript</span>
-                                <span>HTML</span>
-                            </div>
-                            <a href="https://github.com/your-github/weather-app" target="_blank" class="github-link" rel="noopener">
-                                <img src="assets/github.svg" alt="GitHub Link">
-                            </a>
-                        </div>
-                        <div class="project-card">
-                            <h3>Weather App</h3>
-                            <p>A simple weather application built with React.js and OpenWeather API.</p>
-                            <div class="languages">
-                                <span>React.js</span>
-                                <span>JavaScript</span>
-                                <span>HTML</span>
-                            </div>
-                            <a href="https://github.com/your-github/weather-app" target="_blank" class="github-link" rel="noopener">
-                                <img src="assets/github.svg" alt="GitHub Link">
-                            </a>
-                        </div>
-                        <div class="project-card">
-                            <h3>Weather App</h3>
-                            <p>A simple weather application built with React.js and OpenWeather API.</p>
-                            <div class="languages">
-                                <span>React.js</span>
-                                <span>JavaScript</span>
-                                <span>HTML</span>
-                            </div>
-                            <a href="https://github.com/your-github/weather-app" target="_blank" class="github-link" rel="noopener">
-                                <img src="assets/github.svg" alt="GitHub Link">
-                            </a>
-                        </div>
+                <div class="project-card">
+                    <h3>Feathery.in</h3>
+                    <p>A personal branding platform to help individuals document their learning journeys.</p>
+                    <div class="tags">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
                     </div>
+                    <a href="#" class="project-link">Visit</a>
                 </div>
-                
-                
-                
-                <div id="contact" class="section">
-                    <h2>Contact Me</h2>
-                    <form>
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="Your Message"></textarea>
-                        <button type="submit">Send</button>
-                    </form>
+                <!-- More project cards -->
+                <div class="project-card">
+                    <h3>Feathery.in</h3>
+                    <p>A personal branding platform to help individuals document their learning journeys.</p>
+                    <div class="tags">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                    <a href="#" class="project-link">Visit</a>
+                </div>
+                <div class="project-card">
+                    <h3>Feathery.in</h3>
+                    <p>A personal branding platform to help individuals document their learning journeys.</p>
+                    <div class="tags">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                    <a href="#" class="project-link">Visit</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Bottom Bar -->
-       
-    </div>
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="contact">Skills</h2>
+            <div class="skills-container">
+                <h3>Frontend</h3>
+                <div class="frontend">
+                   <ul>
+                    <li>Html& Css</li>
+                    <li>Javascript</li>
+                    <li>Java</li>
+                   </ul>
+                </div>
+                <div class="frameworks">
+                    <h3 class="frame">Frameworks</h3>
+                    <ul class="frames">
+                        <li>Reactjs</li>
+                        <li>SpringBoot</li>
+                    </ul>
+                </div>
+                <div class="backend">
+                    <h3 class="frame">Backend</h3>
+                     <ul class="frames">
+                        <li>Mysql</li>
+                        <li>C#</li>
+                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="contact">Get in Touch</h2>
+            
+            <div class="contact-container">
+                  <div class="email">
+                    <img src="assets/email.svg" alt="home-icon" class="home-icon">
+                    <a href="#" target="_blank" rel="noopener">rosemichellw@gmail.com</a>
+                  </div>
+                  <div class="github">
+                    <img src="assets/github.svg" alt="home-icon" class="home-icon">
+                    <a href="https://github.com/Rosevisuals" target="_blank" rel="noopener">Namubiru Rose</a>
+                  </div>
+                  <div class="twitter">
+                    <img src="assets/x.svg" alt="home-icon" class="home-icon">
+                    <a href="https://x.com/RoseMichelle822" target="_blank" rel="noopener">Namubiru Rose</a>
+                  </div>
+            </div>
+        </div>
+    </section>
 
     <script src="index.js"></script>
 </body>
