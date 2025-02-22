@@ -1,6 +1,7 @@
 const themeToggle = document.getElementById('theme-toggle');
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
+    document.querySelector('.header').classList.toggle('dark-mode'); // Toggle dark mode for the header
 });
 const typedText = document.getElementById('typed-text');
 const colors = ['#007acc', '#28a745', '#dc3545', '#ffc107']; 
